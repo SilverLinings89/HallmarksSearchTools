@@ -19,7 +19,7 @@ auto Paper::OccuringWordsFromWordSet(WordSet * in_Words) -> WordSet {
     string token;
     while ( pos != string::npos) {
         token = temp_abstract.substr(0, pos);
-        if(in_Words->contains(token)) {
+        if(in_Words->find(token) != in_Words->end()) {
             ret.insert(token);
         }
         temp_abstract.erase(0, pos + delimiter.length());
@@ -36,7 +36,7 @@ auto Paper::GetWordHistogram(WordSet * in_Words) -> WordHistogram {
     string word;
     for ( size_t pos = temp_abstract.find(delimiter); pos != string::npos; pos = temp_abstract.find(delimiter)) {
       word = temp_abstract.substr(0, pos);
-      if (in_Words->contains(word)) {
+      if (in_Words->find(word) != in_Words->end()) {
         histogram.updateWithWord(word);
       }
       temp_abstract.erase(0, pos + delimiter.length());
