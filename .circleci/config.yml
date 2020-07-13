@@ -35,7 +35,7 @@ jobs:
             cd build/bin
             ./tests --gtest_output=xml
       - store_test_results:
-          path: build/bin/test_detail.xml
+          path: build/bin/
 
 workflows:
   version: 2
