@@ -33,7 +33,7 @@ jobs:
           name: Execute Tests
           command: |
             cd build/bin
-            gtest --gtest_output=xml
+            ./tests --gtest_output=xml
       - store_test_results:
           path: build/bin/test_detail.xml
 
@@ -41,7 +41,7 @@ workflows:
   version: 2
   build-and-test:
     jobs:
-      - build #(11)
-      - test: #(12)
+      - build
+      - test:
           requires:
             - build
