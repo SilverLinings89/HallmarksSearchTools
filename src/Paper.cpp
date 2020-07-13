@@ -1,4 +1,5 @@
 #include <iostream>
+#include <set>
 #include "Paper.h"
 #include "Constants.h"
 #include "WordHistogram.h"
@@ -9,8 +10,6 @@ Paper::Paper(string in_uid, string in_title, string in_abstract , unsigned int i
 title(in_title), abstract(in_abstract), uid(in_uid), index(in_index) {
     PrepareAbstract();
 }
-
-
 
 auto Paper::OccuringWordsFromWordSet(WordSet * in_Words) -> WordSet {
     WordSet ret;
