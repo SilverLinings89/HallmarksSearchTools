@@ -1,3 +1,5 @@
+[![<SilverLinings89>](https://circleci.com/gh/SilverLinings89/HallmarksSearchTool.svg?style=svg)](https://app.circleci.com/pipelines/github/SilverLinings89)
+
 # The Hallmarks Search Tool
 
 This tool is supposed to crawl a given dataset and automatically build a codeword-rating for predefined hallmarks. All information required is:
