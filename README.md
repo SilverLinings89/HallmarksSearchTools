@@ -28,7 +28,8 @@ I will eventually create an online interface to access the system via the web an
 
 ## Tests
 
-I will eventually add googletests to this code but haven't gotten arount to it so far.
+Gtest has been added and some unit-tests are present. They are automated in a CI-Pipeline in the CircleCi build.
+Also: Gtest is a git-submodule in the third_party subfolder.
 
 ## Data
 
