@@ -1,4 +1,4 @@
-[![<SilverLinings89>](https://circleci.com/gh/SilverLinings89/HallmarksSearchTools.svg?style=svg)](https://app.circleci.com/pipelines/github/SilverLinings89)
+[![SilverLinings89](https://circleci.com/gh/SilverLinings89/HallmarksSearchTools.svg?style=svg)](https://app.circleci.com/pipelines/github/SilverLinings89)
 
 # The Hallmarks Search Tool
 
