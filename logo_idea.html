@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<body>
+<canvas id="myCanvas" width="300" height="300" style="border:1px solid #c3c3c3;">Your browser does not support the canvas element.</canvas>
+<script>
+var canvas = document.getElementById("myCanvas");
+var context = canvas.getContext("2d");
+var n_lines = 7;
+var base_angles = [];
+var colors = ['#ff0000','#00ff00','#0000ff','#ffff00','#ff00ff','#00ffff','#000000', '#555555', '#999999', '#dddddd'];
+var angles = [];
+var speeds = [];
+var interval_per_line = 2 * Math.PI / n_lines;
+var delta = interval_per_line / 4;
+var base_x= canvas.width / 2;
+var base_y= canvas.height / 2;
+var offset_between_lines = 0.1;
+var scale = 100;
+var step = 1;
+var grey = '#999999';
+
+// Init the arrays
+for(var i = 0; i < n_lines; i++) {
+	base_angles[i] = i * interval_per_line;
+    angles[i] = base_angles[i];
+    speeds[i] = Math.random();
+}
+
+var draw_line = function(angle_1, angle_2, color) {
+	context.beginPath();
+    var start_x = Math.sin(angle_1+ offset_between_lines)* scale + base_x;
+    var start_y = - Math.cos(angle_1+ offset_between_lines)* scale + base_y;
+    var end_x = Math.sin(angle_2- offset_between_lines)* scale + base_x;
+    var end_y = - Math.cos(angle_2- offset_between_lines)* scale + base_y;
+    context.moveTo(start_x,start_y);
+    context.lineTo(end_x,end_y);
+    context.strokeStyle = color;
+    context.stroke();
+}
+
+var draw_color_lines = function() {
+	context.lineCap = 'round';
+    context.lineWidth = 15;
+	for(var i = 0; i < n_lines; i++) {
+    	draw_line(angles[i], angles[(i+1) % n_lines], colors[i]);
+    }
+}
+
+var update_one_angle = function(base, speed) {
+	return base + Math.sin(step * speed / 50)*delta;
+}
+
+var update_angles = function() {
+	for(var i = 0; i < n_lines; i++) {
+    	angles[i] = update_one_angle(base_angles[i], speeds[i]);  
+    }
+}
+
+var draw_outer_grey_line = function(angle_1, angle_2) {
+	context.beginPath();
+    var start_x = Math.sin(angle_1)*scale + base_x;
+    var start_y = - Math.cos(angle_1)*scale + base_y;
+    var end_x = Math.sin(angle_2)* scale + base_x;
+    var end_y = - Math.cos(angle_2)* scale + base_y;
+    context.moveTo(start_x,start_y);
+    context.lineTo(end_x,end_y);
+    context.strokeStyle = grey;
+    context.stroke();
+}
+
+var update = function() {
+	update_angles();
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    draw_color_lines();
+    step++;
+}
+
+// Start the animation
+setInterval(update, 10);
+</script>
+
+</body>
+</html>
